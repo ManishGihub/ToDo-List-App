@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <!-- Font awesome link -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+     <style>
+
+        body{
+            background-color: rgb(8, 53, 53);
+        }
+        .container{
+            width: 360px;
+            padding: 33px;
+            text-align: center;
+            margin: 20px auto;
+            background-color: white;
+        }
+        input{
+            width: 270px;
+            padding: 8px;
+            outline: none;
+            border: 2px solid rgb(14, 141, 141);
+            font-size: 19px;
+            margin-top: 20px;
+        }
+        button{
+            width: 60px;
+            height: 40px;
+            background-color: rgb(10, 59, 59);
+            color: white;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            border-radius: 2px;
+            font-size: 19px;
+        }
+        h1{
+            margin-top: 0;
+        }
+        .text ul{
+            position: relative;
+            background-color: rgb(12, 54, 54);
+            color: white;
+            font-size: 19px;
+            padding:10px;
+            text-align: left;
+            border-radius: 3px;
+        }
+        .text ul i{
+            position: absolute;
+            right: 14px;
+            top: 11px;
+            cursor: pointer;
+        }
+
+     </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ToDo App</h1>
+        <div class="inputs">
+            <input type="text" placeholder="Enter your text" id="inp">
+            <button onclick="Add()">Add</button>
+        </div>
+        <div class="text">
+
+        </div>
+    </div>
+
+    <script>
+
+        let inputs = document.getElementById("inp");
+        let text = document.querySelector(".text");
+
+        function Add(){
+            if(inputs.value == ""){
+                alert("Please Enter Task");
+            }else{
+                let newElement = document.createElement("ul")
+                newElement.innerHTML = `${inputs.value} <i class="fa-solid fa-trash"></i>` 
+                text.appendChild(newElement)
+                inputs.value = ""
+                newElement.querySelector("i").addEventListener("click",()=>{
+                    newElement.remove();
+                })
+            }
+        }
+        // function saveData(){
+        //     localStorage.setItem("data",text.innerHTML)
+        // }
+        // function showTask(){
+        //     text.innerHTML = localStorage.getItem("data")
+        // }
+        // // localStorage.clear()
+        // showTask();
+        
+    </script>
+    </body>
+</html>
